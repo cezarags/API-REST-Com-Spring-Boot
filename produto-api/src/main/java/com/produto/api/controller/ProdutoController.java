@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +26,21 @@ public class ProdutoController {
 	
 	
 	@GetMapping("/produtos")
-	public List<Produto> listaProdutos(){    // Metodo para retornar uma lista de todos produtos
+	public List<Produto> listaProdutos(){    // Método para retornar uma lista de todos produtos
 		return prepository.findAll();	
 	}
 	
+	@GetMapping("/produto/{id}")
+	public Produto listarUnicoProduto(@PathVariable(value = "id") long id){ // método para fazer busca pelo Id no bd 
+		return prepository.findById(id);
+	}
 	
+	@PostMapping("/produto")
+	public Produto salvaProduto(@RequestBody Produto produto) {
+		return prepository.save(produto);
+		
+		
+	}
 	
 		
 
