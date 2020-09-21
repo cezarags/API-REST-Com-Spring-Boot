@@ -9,6 +9,8 @@ import com.produto.api.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> { // extende os metodos prontos de jpa repository
 	
+	Produto findById(long id);   // metodo personalizado, procura um produto atraves do Id
+	
 
 	
 	
