@@ -23,7 +23,7 @@ public class ProdutoController {
 	
 	
 	@GetMapping("/produtos")
-	public List<Produto> listaProdutos(){
+	public List<Produto> listaProdutos(){    // Metodo para retornar uma lista de todos produtos
 		return prepository.findAll();	
 	}
 	
